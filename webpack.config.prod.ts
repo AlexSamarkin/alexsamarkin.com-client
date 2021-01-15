@@ -3,11 +3,9 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { merge } from 'webpack-merge';
-import { resolve, join } from 'path';
-import glob from 'glob';
+import { resolve } from 'path';
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-const PurgecssPlugin = require('purgecss-webpack-plugin')
 
 const isAnalyze = process.env.ANALYZE === 'true';
 
@@ -20,9 +18,6 @@ const plugins = [
     }),
     new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css'
-    }),
-    new PurgecssPlugin({
-        paths: glob.sync(`${join(__dirname, 'src')}/**/*`,  { nodir: true }),
     }),
     new CopyWebpackPlugin({
         patterns: [

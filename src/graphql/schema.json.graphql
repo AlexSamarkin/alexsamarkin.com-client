@@ -2,6 +2,7 @@
 
 schema {
     query: Query
+    mutation: Mutation
 }
 
 type CV {
@@ -26,6 +27,10 @@ type Job {
     fromYear: Int!
     title: String!
     toYear: Int
+}
+
+type Mutation {
+    sendMessage(email: String!, message: String!, name: String!): Boolean!
 }
 
 type Nav {

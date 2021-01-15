@@ -5,6 +5,7 @@ import {ApolloClient, InMemoryCache} from "@apollo/client";
 import contentQuery from "../graphql/content.graphql";
 import postsQuery from "../graphql/posts.graphql";
 import postQuery from "../graphql/post.graphql";
+import messageMutation from '../graphql/message.graphql';
 
 export interface ApolloContentQueryVars {
   locale: Locale;
@@ -17,6 +18,12 @@ export interface ApolloPostsQueryVars {
 export interface ApolloPostQueryVars {
   locale: Locale;
   slug: string;
+}
+
+export interface ApolloSendMessageMutationVars {
+  name: string;
+  email: string;
+  message: string;
 }
 
 export interface ApolloContentQueryResult {
@@ -57,14 +64,21 @@ export class ApiService {
 
   constructor(private readonly client: ApolloClient<any>) {}
 
-  public static REST_ENDPOINT = 'https://api.alexsamarkin.com';
-
   public async sendMessage(name: string, email: string, message: string) {
-    return await axios.post(ApiService.REST_ENDPOINT + '/api/contact/send', {
-      name,
-      email,
-      message,
-    });
+    const { data } = await this.client.mutate<{sendMessage: boolean}, ApolloSendMessageMutationVars>({
+      mutation: messageMutation,
+      variables: {
+        name,
+        email,
+        message
+      }
+    })
+
+    if (!data) {
+      return false;
+    }
+
+    return data.sendMessage;
   }
 
   public async getContent(locale: Locale) {

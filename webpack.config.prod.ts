@@ -21,7 +21,8 @@ const plugins = [
     }),
     new CopyWebpackPlugin({
         patterns: [
-            { from: resolve(__dirname, 'src/assets'), to: resolve(__dirname, 'build/assets') }
+            { from: resolve(__dirname, 'src/assets'), to: resolve(__dirname, 'build/assets') },
+            { from: resolve(__dirname, 'public/favicons'), to: resolve(__dirname, "build") }
         ]
     }),
 ];

@@ -1,0 +1,26 @@
+query GetContent($locale: String!) {
+    jobs(locale: $locale) {
+        title,
+        description,
+        fromYear,
+        toYear
+    },
+    courses(locale: $locale) {
+        title,
+        description,
+        fromYear,
+        toYear
+    },
+    navs(locale: $locale) {
+        title,
+        link
+    },
+    texts(locale: $locale) {
+        backendText,
+        frontendText,
+        aboutText
+    },
+    cv {
+        url
+    }
+}

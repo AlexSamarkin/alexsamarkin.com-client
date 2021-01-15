@@ -1,0 +1,9 @@
+query GetPostsQuery($locale: String!){
+    posts(locale: $locale) {
+        title,
+        excerpt,
+        thumb,
+        slug,
+        createdAt
+    }
+}

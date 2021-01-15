@@ -1,0 +1,26 @@
+{
+  "plugins": [
+    "prettier",
+    "react",
+    "import"
+  ],
+  "extends": [
+    "airbnb-typescript",
+    "airbnb",
+    "airbnb/hooks"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "no-debugger": "off",
+    "no-console": 0,
+    "no-return-await": "off",
+    "class-methods-use-this": "off",
+  }
+}

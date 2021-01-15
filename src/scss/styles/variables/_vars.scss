@@ -1,0 +1,69 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Archivo:400,400i,500,500i,600,600i,700,700i&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Merriweather:400,900&display=swap");
+
+// Font settings
+$font-body: "Archivo", sans-serif;
+$font-title: "Archivo", sans-serif;
+$font-additional: "Merriweather", serif;
+
+$baseSystemFontSize: 16px;
+
+$weight-400: 400; // regular
+$weight-500: 500; // medium
+$weight-600: 600; // semi bold
+$weight-700: 700; // bold
+
+// Colors
+$white-color: #fff;
+$black-color: #44566c;
+
+$gray-50-color: #f5f6f7;
+$gray-100-color: #f5f8f9; //bakup F8FAFB
+$gray-200-color: #f0f0f6;
+$gray-300-color: #8697a8;
+$gray-400-color: #5f6f81;
+
+$tone-color: #304cfd; //blue
+$tone-additional-color: #00f1e2; //aqua
+$tone-additional2-color: #2cd5ef; //aqua dark
+
+$red-color: #ff3d57;
+
+// Gradien
+$gradient-1: linear-gradient(
+  to right,
+  rgba(0, 129, 255, 1) 0%,
+  rgba(63, 160, 255, 1) 50%,
+  rgba(0, 69, 255, 1) 100%
+); // blue
+$gradient-2: linear-gradient(
+  to right,
+  rgba(0, 129, 255, 1) 0%,
+  rgba(0, 69, 255, 1) 100%
+); // blue
+$gradient-3: linear-gradient(115.29deg, #fff2e7 1.33%, #ffcada 98.21%); // peach
+$gradient-4: linear-gradient(115.29deg, #0dc8a9 1.33%, #32cbc8 98.21%); // green
+$gradient-5: linear-gradient(
+  135deg,
+  rgba(155, 225, 93, 1) 0%,
+  rgba(0, 217, 166, 1) 100%
+);
+
+// Dark sheme
+$dark-black-1: #272333;
+$dark-black-2: #302c40;
+$dark-black-3: #2c283a;
+$absolute-black: #000;
+
+$dark-tone-color: #0d86ff;
+
+$gray-body: #dedde0;
+$gray-header: #f1f2f4;
+
+// Border radius
+$border-rounded-10: 10px;
+$border-rounded-16: 16px;
+$border-rounded-20: 20px;
+$border-rounded-30: 30px;
+$border-rounded-48: 48px;

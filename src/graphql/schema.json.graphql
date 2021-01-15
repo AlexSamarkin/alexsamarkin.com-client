@@ -1,0 +1,57 @@
+# This file was generated based on "schema.json". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type CV {
+    url: String!
+}
+
+type ContentText {
+    aboutText: String!
+    backendText: String!
+    frontendText: String!
+}
+
+type Course {
+    description: String!
+    fromYear: Int!
+    title: String!
+    toYear: Int!
+}
+
+type Job {
+    description: String!
+    fromYear: Int!
+    title: String!
+    toYear: Int
+}
+
+type Nav {
+    link: String!
+    title: String!
+}
+
+type Post {
+    content: String
+    createdAt: DateTime!
+    excerpt: String!
+    slug: String!
+    thumb: String!
+    title: String!
+}
+
+type Query {
+    courses(locale: String!): [Course!]!
+    cv: CV!
+    jobs(locale: String!): [Job!]!
+    navs(locale: String!): [Nav!]!
+    post(locale: String!, slug: String!): Post!
+    posts(locale: String!): [Post!]!
+    texts(locale: String!): ContentText!
+}
+
+
+"A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."
+scalar DateTime

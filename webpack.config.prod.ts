@@ -17,12 +17,17 @@ const plugins = [
         scriptLoading: 'defer'
     }),
     new MiniCssExtractPlugin({
-        filename: '[name].[contenthash].css'
+        filename: '[name].[contenthash].css',
+        attributes: {
+            as: 'style',
+            rel: 'preload'
+        }
     }),
     new CopyWebpackPlugin({
         patterns: [
             { from: resolve(__dirname, 'src/assets'), to: resolve(__dirname, 'build/assets') },
-            { from: resolve(__dirname, 'public/favicons'), to: resolve(__dirname, "build") }
+            { from: resolve(__dirname, 'public/favicons'), to: resolve(__dirname, "build") },
+            { from: resolve(__dirname, 'public/robots.txt'), to: resolve(__dirname, "build/robots.txt") }
         ]
     }),
 ];

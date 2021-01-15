@@ -60,7 +60,7 @@ export class ApiService {
   public static REST_ENDPOINT = 'https://api.alexsamarkin.com';
 
   public async sendMessage(name: string, email: string, message: string) {
-    return await axios.post(ApiService.REST_ENDPOINT + '/api/send/message', {
+    return await axios.post(ApiService.REST_ENDPOINT + '/api/contact/send', {
       name,
       email,
       message,

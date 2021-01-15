@@ -7,7 +7,6 @@ export function* contentSaga() {
   const locale = yield select((state) => state.settings.lang);
   const content = yield apiService.getContent(locale);
   if (content) {
-    console.log(content)
     yield put(setContent({
       texts: {
         about: content.texts.aboutText,

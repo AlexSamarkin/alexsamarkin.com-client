@@ -3,8 +3,7 @@ name: CI
 on: 
   push:
     branches: [master]
-  
-  
+
 env:
   DEPLOY_PATH: /var/www/app
   BUILD_SCRIPT: npm run build

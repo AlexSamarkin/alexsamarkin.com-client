@@ -6,8 +6,8 @@ import { articlesReducer } from './articleReducer';
 import { settingsReducer } from './settingsReducer';
 
 export const Reducers = combineReducers<State>({
-  [StateSections.CONTACT]: contactReducer,
-  [StateSections.CONTENT]: contentReducer,
-  [StateSections.BLOG]: articlesReducer,
-  [StateSections.SETTINGS]: settingsReducer,
+    [StateSections.CONTACT]: contactReducer,
+    [StateSections.CONTENT]: contentReducer,
+    [StateSections.BLOG]: articlesReducer,
+    [StateSections.SETTINGS]: settingsReducer,
 });

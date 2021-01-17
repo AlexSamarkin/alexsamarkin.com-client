@@ -5,10 +5,5 @@ import watchLoadArticles from './blogSaga';
 import watchSwitchLang from './langSaga';
 
 export default function* rootSaga() {
-  yield all([
-    spawn(watchSendMessage),
-    spawn(watchInitApp),
-    spawn(watchLoadArticles),
-    spawn(watchSwitchLang),
-  ]);
+    yield all([spawn(watchSendMessage), spawn(watchInitApp), spawn(watchLoadArticles), spawn(watchSwitchLang)]);
 }

@@ -100,7 +100,8 @@
     "analyze": "cross-env TS_NODE_PROJECT=\"webpack/tsconfig.json\" cross-env ANALYZE=true webpack -c webpack.config.prod.ts",
     "start": "cross-env TS_NODE_PROJECT=\"webpack/tsconfig.json\" webpack serve -c webpack.config.dev.ts",
     "build": "cross-env TS_NODE_PROJECT=\"webpack/tsconfig.json\" webpack -c webpack.config.prod.ts",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --update-snapshot --collect-coverage"
   },
   "browserslist": {
     "production": [

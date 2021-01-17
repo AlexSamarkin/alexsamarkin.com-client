@@ -5,7 +5,11 @@ import apiService from '../services/ApiService';
 import { Action } from '../types';
 
 export function* sendMessageSaga(action: Action) {
-    const res = yield apiService.sendMessage(action.payload.name, action.payload.email, action.payload.message);
+    const { payload } = action;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const { name, email, message } = payload;
+    const res = yield apiService.sendMessage(name, email, message);
     if (res) {
         yield put(sendSuccess());
     } else {

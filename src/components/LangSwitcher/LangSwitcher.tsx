@@ -1,6 +1,6 @@
 import React from 'react';
 import { Locale } from '../../types';
-import { LangButton } from './LangButton';
+import LangButton from './LangButton';
 
 export interface Props {
     langs: Locale[];

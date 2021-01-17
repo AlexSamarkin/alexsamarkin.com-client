@@ -29,7 +29,8 @@ export const Resume: React.FC<ResumeProps> = (props) => {
                 <div className="row">
                     <div className="col-12 col-lg-6">
                         <h2 className="title title--h3">
-                            <img className="title-icon" src={educationSvg} alt="Education" /> {t('headers.education')}
+                            <img className="title-icon" src={educationSvg.toString()} alt="Education" />{' '}
+                            {t('headers.education')}
                         </h2>
                         <Timeline>
                             {courses &&
@@ -49,7 +50,7 @@ export const Resume: React.FC<ResumeProps> = (props) => {
 
                     <div className="col-12 col-lg-6">
                         <h2 className="title title--h3">
-                            <img className="title-icon" src={expSvg} alt="" /> {t('headers.experience')}
+                            <img className="title-icon" src={expSvg.toString()} alt="" /> {t('headers.experience')}
                         </h2>
                         <Timeline>
                             {jobs &&

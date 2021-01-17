@@ -2,11 +2,13 @@ import { takeEvery, put } from 'redux-saga/effects';
 import { ActionsEnum } from '../actions/types';
 import langService from '../services/LanguageService';
 import { initApp, setLanguage } from '../actions';
-import { Action } from '../types';
+import { Action, Locale } from '../types';
 
 export function* langSaga(action: Action) {
-    yield langService.setLanguage(action.payload.lang);
-    yield put(setLanguage(action.payload.lang));
+    const { payload } = action;
+    const lang = payload.lang ?? Locale.EN;
+    yield langService.setLanguage(lang);
+    yield put(setLanguage(lang));
     yield put(initApp());
 }
 

@@ -4,7 +4,7 @@ import { resolve } from './webpack/resolve';
 
 const config: wp.Configuration = {
     entry,
-    resolve
-}
+    resolve,
+};
 
 export default config;

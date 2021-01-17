@@ -1,14 +1,19 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Hamburger from './Hamburger';
+import Card, { CardProps } from './Card';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('Hamburger component', () => {
+const mockedProps: CardProps = {
+    icon: 'icon.svg',
+    title: 'test',
+    children: <div>123</div>,
+};
+
+describe('Card component', () => {
     test('renders', () => {
-        const onClick = jest.fn();
-        const wrapper = shallow(<Hamburger isOpen={false} onClick={onClick} />);
+        const wrapper = shallow(<Card {...mockedProps} />);
         expect(wrapper.exists()).toBe(true);
         expect(wrapper).toMatchSnapshot();
     });

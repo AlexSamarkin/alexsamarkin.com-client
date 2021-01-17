@@ -115,7 +115,7 @@ const locales: Record<string, string | Record<string, Record<string, string> | s
 
 export const translates = (lang: Locale) => (path: string) => {
     const arrPath: string[] = path.split('.');
-    let res = locales;
+    let res: { [key: string]: never } = Object.create(locales);
     arrPath.forEach((item: string) => (res = res[item]));
 
     return res[lang];

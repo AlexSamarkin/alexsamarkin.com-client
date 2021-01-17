@@ -1,44 +1,46 @@
 export enum SendingStatus {
-  SUCCESS = 'success',
-  FAILED = 'failed',
-  SENDING = 'sending',
-  IDLE = 'idle',
+    SUCCESS = 'success',
+    FAILED = 'failed',
+    SENDING = 'sending',
+    IDLE = 'idle',
 }
 
+export type Payload = boolean | string | number | Date | Record<string, number | boolean | string>;
+
 export interface Action {
-  type: string;
-  payload?: any;
+    type: string;
+    payload?: Payload;
 }
 
 export interface JobItem {
-  title: string;
-  fromYear: number;
-  toYear: number | null;
-  description: string;
+    title: string;
+    fromYear: number;
+    toYear: number | null;
+    description: string;
 }
 
 export interface CourseItem {
-  title: string;
-  fromYear: number;
-  toYear: number | null;
-  description: string;
+    title: string;
+    fromYear: number;
+    toYear: number | null;
+    description: string;
 }
 
 export interface NavItem {
-  title: string;
-  link: string;
+    title: string;
+    link: string;
 }
 
 export interface Article {
-  title: string;
-  date: Date;
-  excerpt: string;
-  thumb: string;
-  slug: string;
-  content?: string;
+    title: string;
+    date: Date;
+    excerpt: string;
+    thumb: string;
+    slug: string;
+    content?: string;
 }
 
 export enum Locale {
-  RU = 'ru',
-  EN = 'en',
+    RU = 'ru',
+    EN = 'en',
 }

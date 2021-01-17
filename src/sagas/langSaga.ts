@@ -5,11 +5,11 @@ import { initApp, setLanguage } from '../actions';
 import { Action } from '../types';
 
 export function* langSaga(action: Action) {
-  yield langService.setLanguage(action.payload.lang);
-  yield put(setLanguage(action.payload.lang));
-  yield put(initApp());
+    yield langService.setLanguage(action.payload.lang);
+    yield put(setLanguage(action.payload.lang));
+    yield put(initApp());
 }
 
 export default function* watchSwitchLang() {
-  yield takeEvery(ActionsEnum.TOGGLE_LANGUAGE, langSaga);
+    yield takeEvery(ActionsEnum.TOGGLE_LANGUAGE, langSaga);
 }

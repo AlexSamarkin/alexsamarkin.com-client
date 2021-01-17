@@ -13,17 +13,13 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middlewares = [sagaMiddleware];
 
-const store = createStore(
-  Reducers,
-  initialState,
-  applyMiddleware(...middlewares),
-);
+const store = createStore(Reducers, initialState, applyMiddleware(...middlewares));
 
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <AppContainer />
-  </Provider>,
-  document.getElementById('root'),
+    <Provider store={store}>
+        <AppContainer />
+    </Provider>,
+    document.getElementById('root'),
 );

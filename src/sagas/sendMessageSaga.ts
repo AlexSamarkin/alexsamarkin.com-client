@@ -1,15 +1,11 @@
 import { takeEvery, put } from 'redux-saga/effects';
 import { ActionsEnum } from '../actions/types';
-import { sendSuccess, sendFailed } from '../actions';
+import { sendSuccess, sendFailed, sendMessage } from '../actions';
 import apiService from '../services/ApiService';
-import { Action } from '../types';
 
-export function* sendMessageSaga(action: Action) {
+export function* sendMessageSaga(action: ReturnType<typeof sendMessage>) {
     const { payload } = action;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const { name, email, message } = payload;
-    const res = yield apiService.sendMessage(name, email, message);
+    const res = yield apiService.sendMessage(payload.name, payload.email, payload.message);
     if (res) {
         yield put(sendSuccess());
     } else {

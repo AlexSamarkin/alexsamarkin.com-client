@@ -1,0 +1,31 @@
+{
+  "short_name": "Alexander Samarkin",
+  "name": "Alexander Samarkin - web-developer",
+  "description": "Alexander Samarkin personal web-site",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#272333",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#272333",
+  "shortcuts": [
+    {
+      "name": "Alexander Samarkin",
+      "short_name": "Alexander Samarkin",
+      "description": "Personal website",
+      "url": "/?source=pwa",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

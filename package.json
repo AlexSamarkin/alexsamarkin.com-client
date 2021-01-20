@@ -44,6 +44,7 @@
     "@types/webpack-bundle-analyzer": "^3.9.0",
     "@types/webpack-dev-server": "^3.11.1",
     "@types/webpack-manifest-plugin": "^3.0.1",
+    "@types/workbox-webpack-plugin": "^5.1.5",
     "@typescript-eslint/eslint-plugin": "^4.13.0",
     "apollo-link-schema": "^1.2.5",
     "babel-core": "^7.0.0-beta.3",
@@ -93,7 +94,8 @@
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0",
     "webpack-manifest-plugin": "^3.0.0",
-    "webpack-merge": "^5.7.2"
+    "webpack-merge": "^5.7.2",
+    "workbox-webpack-plugin": "^6.0.2"
   },
   "scripts": {
     "lint": "eslint 'src/**/*.{js,ts,tsx}'",

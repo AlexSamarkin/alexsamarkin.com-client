@@ -7,6 +7,7 @@ import { resolve } from 'path';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
+import WorkboxPlugin from 'workbox-webpack-plugin';
 
 const isAnalyze = process.env.ANALYZE === 'true';
 
@@ -17,6 +18,10 @@ const plugins = [
         minify: true,
         template: resolve(__dirname, 'public/index.html'),
         scriptLoading: 'defer',
+    }),
+    new WorkboxPlugin.GenerateSW({
+        clientsClaim: true,
+        skipWaiting: true,
     }),
     new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css',

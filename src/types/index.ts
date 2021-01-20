@@ -5,7 +5,7 @@ export enum SendingStatus {
     IDLE = 'idle',
 }
 
-export type Payload = boolean | string | number | null | Date | { [key: string]: string | boolean | number | null };
+export type Payload = any | Record<string, any>;
 
 export interface Action {
     type: string;

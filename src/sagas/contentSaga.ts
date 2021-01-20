@@ -5,10 +5,10 @@ import apiService from '../services/ApiService';
 
 export function* contentSaga() {
     const locale = yield select((state) => state.settings.lang);
-    const content = yield apiService.getContent(locale);
-    if (content) {
-        yield put(
-            setContent({
+    try {
+        const content = yield apiService.getContent(locale);
+        if (content) {
+            const payload = {
                 texts: {
                     about: content.texts.aboutText,
                     backend: content.texts.backendText,
@@ -18,9 +18,12 @@ export function* contentSaga() {
                 courses: content.courses,
                 jobs: content.jobs,
                 cvUrl: content.cv.url,
-            }),
-        );
-    } else {
+            };
+            yield put(setContent(payload));
+        } else {
+            yield put(contentFetchFailed());
+        }
+    } catch (e) {
         yield put(contentFetchFailed());
     }
 }

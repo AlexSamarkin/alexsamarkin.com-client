@@ -6,10 +6,12 @@ import { merge } from 'webpack-merge';
 import { resolve } from 'path';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 
 const isAnalyze = process.env.ANALYZE === 'true';
 
 const plugins = [
+    new WebpackManifestPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
         minify: true,
@@ -28,6 +30,10 @@ const plugins = [
             { from: resolve(__dirname, 'src/assets'), to: resolve(__dirname, 'build/assets') },
             { from: resolve(__dirname, 'public/favicons'), to: resolve(__dirname, 'build') },
             { from: resolve(__dirname, 'public/robots.txt'), to: resolve(__dirname, 'build/robots.txt') },
+            {
+                from: resolve(__dirname, 'public/manifest.webmanifest'),
+                to: resolve(__dirname, 'build/manifest.webmanifest'),
+            },
         ],
     }),
 ];

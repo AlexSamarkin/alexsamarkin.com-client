@@ -7,5 +7,5 @@ export const resolve = {
         '@components': pathResolve(__dirname, '..', './src/components'),
         '@containers': pathResolve(__dirname, '..', './src/containers'),
         '@pages': pathResolve(__dirname, '..', './src/pages'),
-    }
-}
+    },
+};

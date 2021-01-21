@@ -14,7 +14,7 @@ export const LangSwitcher: React.FC<Props> = (props) => {
         <div className="btn-group btn-group-toggle btn-group-sm lang-switcher" data-toggle="buttons">
             {langs &&
                 langs.map((lang: Locale) => {
-                    return <LangButton key={lang} active={lang === activeLang} lang={lang} onChange={onChange} />;
+                    return <LangButton key={lang} active={lang !== activeLang} lang={lang} onChange={onChange} />;
                 })}
         </div>
     );

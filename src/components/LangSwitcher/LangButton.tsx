@@ -9,9 +9,9 @@ export interface Props {
 
 export const LangButton: React.FC<Props> = (props) => {
     const { lang, active, onChange } = props;
-    const className = `btn btn-secondary ${active ? 'active' : undefined}`;
+    const className = `btn btn-secondary ${active ? 'active' : ''}`;
     const handleChange = useCallback(() => {
-        if (!active) onChange(lang);
+        if (active) onChange(lang);
     }, [lang, onChange, active]);
     return (
         <label className={className}>

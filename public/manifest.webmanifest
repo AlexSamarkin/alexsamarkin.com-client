@@ -20,7 +20,7 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "/?source=pwa",
+  "start_url": "https://alexsamarkin.com/?source=pwa",
   "background_color": "#272333",
   "display": "standalone",
   "scope": "/",

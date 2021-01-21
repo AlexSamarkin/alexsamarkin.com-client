@@ -22,6 +22,16 @@ const plugins = [
     new WorkboxPlugin.GenerateSW({
         clientsClaim: true,
         skipWaiting: true,
+        runtimeCaching: [
+            {
+                urlPattern: new RegExp('/offline'),
+                handler: 'StaleWhileRevalidate',
+            },
+            {
+                urlPattern: new RegExp('/'),
+                handler: 'StaleWhileRevalidate',
+            },
+        ],
     }),
     new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css',

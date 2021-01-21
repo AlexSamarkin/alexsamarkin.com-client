@@ -28,7 +28,7 @@ const plugins = [
                 handler: 'StaleWhileRevalidate',
             },
             {
-                urlPattern: new RegExp('/'),
+                urlPattern: new RegExp('/?source=pwa'),
                 handler: 'StaleWhileRevalidate',
             },
         ],

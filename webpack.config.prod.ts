@@ -8,6 +8,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 import WorkboxPlugin from 'workbox-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 
 const isAnalyze = process.env.ANALYZE === 'true';
 
@@ -68,6 +69,8 @@ export default merge(config, {
         hints: false,
     },
     optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin({ parallel: true })],
         removeAvailableModules: false,
         removeEmptyChunks: false,
         splitChunks: {

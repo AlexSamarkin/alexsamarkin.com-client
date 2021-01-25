@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react';
-import ButtonLink from '../ButtonLink';
 import SocialLink from '../SocialLink/SocialLink';
 import Avatar from '../Avatar/Avatar';
 import { Locale } from '../../types';
 import translates from '../../lang';
 import { LangSwitcher } from '../LangSwitcher';
+import CVButtonContainer from '../../containers/CVButtonContainer/CVButtonContainer';
 
 export interface SidebarStateProps {
-    cvUrl: string;
     lang: Locale;
 }
 
@@ -18,7 +17,7 @@ export interface SidebarDispatchProps {
 export type SidebarProps = SidebarStateProps & SidebarDispatchProps;
 
 export const Sidebar: React.FC<SidebarProps> = (props) => {
-    const { cvUrl, lang, onLangChange } = props;
+    const { lang, onLangChange } = props;
     const t = useMemo(() => {
         return translates(lang);
     }, [lang]);
@@ -66,7 +65,7 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
                         </li>
                     </ul>
 
-                    <ButtonLink title={t('buttons.cv')} href={cvUrl} icon={'icon-download'} />
+                    <CVButtonContainer title={t('buttons.cv')} />
                 </div>
             </div>
         </aside>

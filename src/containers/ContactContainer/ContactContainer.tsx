@@ -1,17 +1,24 @@
-import { Dispatch } from 'react';
-import { connect } from 'react-redux';
-import { State, StateSections } from '../../state';
-import { sendMessage } from '../../actions';
-import { Action } from '../../types';
-import Form, { FormDispatchProps, FormStateProps } from '../../components/Form/Form';
+import React, { useCallback } from 'react';
+import { Locale, SendingStatus } from '../../types';
+import { useMutation } from '@apollo/client';
+import { SEND_MESSAGE } from '../../operations/mutations/sendMessage';
+import Form from '../../components/Form/Form';
 
-const mapStateToProps = (state: State): FormStateProps => ({
-    status: state[StateSections.CONTACT].status,
-    lang: state[StateSections.SETTINGS].lang,
-});
+export const ContactsContainer: React.FC<{ lang: Locale }> = ({ lang }) => {
+    const [sendMessage, { data }] = useMutation(SEND_MESSAGE);
+    const onSubmit = useCallback(
+        async ({ name, email, message }) => {
+            await sendMessage({ variables: { name, email, message } });
+        },
+        [sendMessage],
+    );
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>): FormDispatchProps => ({
-    onSubmit: (values) => dispatch(sendMessage(values)),
-});
+    let status: SendingStatus;
+    if (!data) {
+        status = SendingStatus.IDLE;
+    } else {
+        status = data.sendMessage ? SendingStatus.SUCCESS : SendingStatus.FAILED;
+    }
 
-export const ContactsContainer = connect(mapStateToProps, mapDispatchToProps)(Form);
+    return <Form onSubmit={onSubmit} lang={lang} status={status} />;
+};

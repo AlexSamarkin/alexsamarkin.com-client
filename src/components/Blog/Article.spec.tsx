@@ -8,7 +8,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Article component', () => {
     test('renders', () => {
         const wrapper = shallow(
-            <Article date={new Date()} thumb={'img.png'} title={'Test article'} slug={'test'} excerpt={'test'} />,
+            <Article createdAt={new Date()} thumb={'img.png'} title={'Test article'} slug={'test'} excerpt={'test'} />,
         );
         expect(wrapper.exists()).toBe(true);
         expect(wrapper).toMatchSnapshot();

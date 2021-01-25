@@ -1,19 +1,37 @@
-import { connect } from 'react-redux';
-import { State, StateSections } from '../../state';
-import List, { ListDispatchProps, ListStateProps } from '../../pages/Blog/List';
-import { Dispatch } from 'react';
-import { Action } from '../../types';
-import { loadArticles } from '../../actions';
+import React from 'react';
+import { Article, Locale } from '../../types';
+import { useQuery } from '@apollo/client';
+import { GET_POSTS } from '../../operations/queries/getPosts';
+import List from '../../pages/Blog/List';
+import Preloader from '../../components/Preloader';
 
-const mapStateToProps = (state: State): ListStateProps => ({
-    articles: state[StateSections.BLOG].articles,
-    lang: state[StateSections.SETTINGS].lang,
-});
+export interface ArticlesQueryData {
+    posts: Article[];
+}
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>): ListDispatchProps => ({
-    load: () => dispatch(loadArticles()),
-});
+export interface ArticlesQueryVar {
+    locale: Locale;
+}
 
-export const ArticlesContainer = connect(mapStateToProps, mapDispatchToProps)(List);
+export const ArticlesContainer: React.FC<{ lang: Locale }> = ({ lang }) => {
+    const { data, loading } = useQuery<ArticlesQueryData, ArticlesQueryVar>(GET_POSTS, {
+        variables: {
+            locale: lang,
+        },
+    });
+
+    if (loading || !data) {
+        return <Preloader />;
+    }
+
+    const articles = data.posts.map((post) => {
+        return {
+            ...post,
+            createdAt: new Date(post.createdAt),
+        };
+    });
+
+    return <List articles={articles} lang={lang} />;
+};
 
 export default ArticlesContainer;

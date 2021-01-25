@@ -1,16 +1,22 @@
-import { Dispatch } from 'react';
-import { connect } from 'react-redux';
-import { initApp } from '../../actions';
-import { State, StateSections } from '../../state';
-import { Action } from '../../types';
-import App, { AppDispatchProps, AppStateProps } from '../../components/App/App';
+import React from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_LOCALE } from '../../operations/queries/getLocale';
+import App from '../../components/App';
+import { Locale } from '../../types';
+import Preloader from '../../components/Preloader';
 
-const mapStateToProps = (state: State): AppStateProps => ({
-    lang: state[StateSections.SETTINGS].lang,
-});
+export interface LocaleData {
+    lang: Locale;
+}
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>): AppDispatchProps => ({
-    onInit: () => dispatch(initApp()),
-});
+export const AppContainer: React.FC = () => {
+    const { data } = useQuery<LocaleData>(GET_LOCALE);
 
-export const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
+    if (!data) {
+        return <Preloader />;
+    }
+
+    return <App lang={data.lang} />;
+};
+
+export default AppContainer;

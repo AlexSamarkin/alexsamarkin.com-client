@@ -21,7 +21,7 @@ export const Contact: React.FC<ContactProps> = ({ lang }) => {
 
             <h2 className="title title--h3">{t('headers.contactForm')}</h2>
 
-            <ContactsContainer />
+            <ContactsContainer lang={lang} />
 
             <div className="box-inner box-inner--rounded">
                 <Footer />

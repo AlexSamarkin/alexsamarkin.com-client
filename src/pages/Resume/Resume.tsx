@@ -7,13 +7,11 @@ import { CourseItem, JobItem, Locale } from '../../types';
 import Footer from '../../components/Footer/Footer';
 import translates from '../../lang';
 
-export interface ResumeStateProps {
+export interface ResumeProps {
     jobs: JobItem[];
     courses: CourseItem[];
     lang: Locale;
 }
-
-export type ResumeProps = ResumeStateProps;
 
 export const Resume: React.FC<ResumeProps> = (props) => {
     const { jobs, courses, lang } = props;

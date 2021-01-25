@@ -1,26 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import { ApolloProvider } from '@apollo/client';
+import { getApolloClient } from './services/apolloClient';
+import AppContainer from './containers/AppContainer/AppContainer';
+
 import './index.scss';
-import { Reducers } from './reducers';
-import initialState from './initialState';
-import { AppContainer } from './containers/AppContainer/AppContainer';
-import rootSaga from './sagas/rootSaga';
 
-const sagaMiddleware = createSagaMiddleware();
-
-const middlewares = [sagaMiddleware];
-
-const store = createStore(Reducers, initialState, applyMiddleware(...middlewares));
-
-sagaMiddleware.run(rootSaga);
+const client = getApolloClient();
 
 ReactDOM.render(
-    <Provider store={store}>
+    <ApolloProvider client={client}>
         <AppContainer />
-    </Provider>,
+    </ApolloProvider>,
     document.getElementById('root'),
 );
 

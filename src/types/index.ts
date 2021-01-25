@@ -5,13 +5,6 @@ export enum SendingStatus {
     IDLE = 'idle',
 }
 
-export type Payload = any | Record<string, any>;
-
-export interface Action {
-    type: string;
-    payload?: Payload;
-}
-
 export interface JobItem {
     title: string;
     fromYear: number;
@@ -33,7 +26,7 @@ export interface NavItem {
 
 export interface Article {
     title: string;
-    date: Date;
+    createdAt: Date;
     excerpt: string;
     thumb: string;
     slug: string;

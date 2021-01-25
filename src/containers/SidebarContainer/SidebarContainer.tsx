@@ -1,19 +1,15 @@
-import { connect } from 'react-redux';
-import { State, StateSections } from '../../state';
-import Sidebar, { SidebarDispatchProps, SidebarStateProps } from '../../components/Sidebar/Sidebar';
-import { Dispatch } from 'react';
-import { Action, Locale } from '../../types';
-import { toggleLanguage } from '../../actions';
+import React from 'react';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import { useQuery } from '@apollo/client';
+import { GET_LOCALE } from '../../operations/queries/getLocale';
+import localeMutations from '../../operations/mutations';
 
-const mapStateToProps = (state: State): SidebarStateProps => ({
-    cvUrl: state[StateSections.CONTENT].cvUrl,
-    lang: state[StateSections.SETTINGS].lang,
-});
+const SidebarContainer: React.FC = () => {
+    const localeQueryResult = useQuery(GET_LOCALE);
+    const lang = localeQueryResult.data.lang;
+    const { changeLocale } = localeMutations;
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>): SidebarDispatchProps => ({
-    onLangChange: (lang: Locale) => dispatch(toggleLanguage(lang)),
-});
-
-export const SidebarContainer = connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+    return <Sidebar lang={lang} onLangChange={changeLocale} />;
+};
 
 export default SidebarContainer;

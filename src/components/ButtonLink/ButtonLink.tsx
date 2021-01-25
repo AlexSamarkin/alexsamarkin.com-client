@@ -4,9 +4,10 @@ export interface ButtonLinkProps {
     title: string;
     href: string;
     icon?: string;
+    disabled?: boolean;
 }
 
-export const ButtonLink: React.FC<ButtonLinkProps> = ({ title, href, icon }) => {
+export const ButtonLink: React.FC<ButtonLinkProps> = ({ title, href, icon, disabled }) => {
     const renderIcon = useCallback(() => {
         if (!icon) {
             return null;
@@ -17,7 +18,7 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({ title, href, icon }) => 
     }, [icon]);
 
     return (
-        <a className="btn" rel="noreferrer" target={'_blank'} href={href ?? '#'}>
+        <a className={`btn ${disabled ? 'disabled' : ''}`} rel="noreferrer" target={'_blank'} href={href ?? '#'}>
             {icon && renderIcon()}
             {title}
         </a>

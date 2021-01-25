@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink as Link } from 'react-router-dom';
 
 export interface ArticleProps {
-    date: Date;
+    createdAt: Date;
     slug: string;
     thumb: string;
     title: string;
@@ -10,11 +10,11 @@ export interface ArticleProps {
 }
 
 export const Article: React.FC<ArticleProps> = (props) => {
-    const { date, slug, thumb, title, excerpt } = props;
+    const { createdAt, slug, thumb, title, excerpt } = props;
     return (
         <article className="news-item box">
             <div className="news-item__image-wrap overlay overlay--45">
-                <div className="news-item__date">{date.toLocaleDateString()}</div>
+                <div className="news-item__date">{createdAt.toLocaleDateString()}</div>
                 <Link className={'news-item__link'} to={`/articles/${slug}`} />
                 <img className="cover lazyload" src={thumb} alt={title} />
             </div>

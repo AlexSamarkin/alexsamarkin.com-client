@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useMemo } from 'react';
+import React, { lazy, Suspense, useMemo } from 'react';
 import { YMInitializer } from 'react-yandex-metrika';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -16,21 +16,12 @@ const ContactPage = lazy(() => import('../../pages/Contact/Contact'));
 
 const NotFoundPage = lazy(() => import('../../pages/NotFound/NotFound'));
 
-export interface AppStateProps {
+export interface AppProps {
     lang: Locale;
 }
 
-export interface AppDispatchProps {
-    onInit: () => void;
-}
-
-export type AppProps = AppStateProps & AppDispatchProps;
-
-export const App: React.FC<AppProps> = ({ lang, onInit }) => {
+export const App: React.FC<AppProps> = ({ lang }) => {
     const t = useMemo(() => translates(lang), [lang]);
-    useEffect(() => {
-        onInit();
-    }, [onInit]);
 
     return (
         <>
@@ -50,22 +41,22 @@ export const App: React.FC<AppProps> = ({ lang, onInit }) => {
                                             <div className="tabcontent active">
                                                 <Switch>
                                                     <Route path="/" exact>
-                                                        <AboutPage />
+                                                        <AboutPage lang={lang} />
                                                     </Route>
                                                     <Route path="/about">
-                                                        <AboutPage />
+                                                        <AboutPage lang={lang} />
                                                     </Route>
                                                     <Route path="/resume">
-                                                        <ResumePage />
+                                                        <ResumePage lang={lang} />
                                                     </Route>
                                                     <Route path="/contact">
                                                         <ContactPage lang={lang} />
                                                     </Route>
                                                     <Route exact path="/articles">
-                                                        <ArticlesPage />
+                                                        <ArticlesPage lang={lang} />
                                                     </Route>
                                                     <Route path="/articles/:slug">
-                                                        <ArticlePage />
+                                                        <ArticlePage lang={lang} />
                                                     </Route>
                                                     <Route path="*">
                                                         <NotFoundPage lang={lang} />

@@ -1,0 +1,8 @@
+query GetJobsQuery($locale: String!) {
+    jobs(locale: $locale) {
+        title,
+        description,
+        fromYear,
+        toYear
+    }
+}

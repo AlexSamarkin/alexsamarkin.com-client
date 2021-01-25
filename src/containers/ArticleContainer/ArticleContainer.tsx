@@ -1,19 +1,39 @@
-import { connect } from 'react-redux';
-import { State, StateSections } from '../../state';
-import { Dispatch } from 'react';
-import { Action } from '../../types';
-import { loadArticle } from '../../actions';
-import ArticlePage, { ArticlePageDispatchProps, ArticlePageStateProps } from '../../pages/Blog/ArticlePage';
+import React from 'react';
+import { Article, Locale } from '../../types';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_POST } from '../../operations/queries/getPost';
+import Preloader from '../../components/Preloader';
+import ArticlePage from '../../pages/Blog/ArticlePage';
 
-const mapStateToProps = (state: State): ArticlePageStateProps => ({
-    article: state[StateSections.BLOG].currentArticle,
-    lang: state[StateSections.SETTINGS].lang,
-});
+export interface ArticleQueryData {
+    post: Article;
+}
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>): ArticlePageDispatchProps => ({
-    load: (slug: string) => dispatch(loadArticle(slug)),
-});
+export interface ArticlesQueryVar {
+    locale: Locale;
+    slug: string;
+}
 
-export const ArticleContainer = connect(mapStateToProps, mapDispatchToProps)(ArticlePage);
+export const ArticleContainer: React.FC<{ lang: Locale }> = ({ lang }) => {
+    const { slug } = useParams<{ slug: string }>();
+    const { data, loading } = useQuery<ArticleQueryData, ArticlesQueryVar>(GET_POST, {
+        variables: {
+            locale: lang,
+            slug,
+        },
+    });
+
+    if (loading || !data) {
+        return <Preloader />;
+    }
+
+    const article = {
+        ...data.post,
+        createdAt: new Date(data.post.createdAt),
+    };
+
+    return <ArticlePage article={article} />;
+};
 
 export default ArticleContainer;

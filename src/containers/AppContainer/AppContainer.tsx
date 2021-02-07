@@ -5,14 +5,14 @@ import App from '../../components/App';
 import { Locale } from '../../types';
 import Preloader from '../../components/Preloader';
 
-export interface LocaleData {
+export interface LocaleQueryData {
     lang: Locale;
 }
 
 export const AppContainer: React.FC = () => {
-    const { data } = useQuery<LocaleData>(GET_LOCALE);
+    const { data, loading } = useQuery<LocaleQueryData>(GET_LOCALE);
 
-    if (!data) {
+    if (!data || loading) {
         return <Preloader />;
     }
 

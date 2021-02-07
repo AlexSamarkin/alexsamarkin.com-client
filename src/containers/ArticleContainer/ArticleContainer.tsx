@@ -15,8 +15,12 @@ export interface ArticlesQueryVar {
     slug: string;
 }
 
+export interface UriParams {
+    slug: string;
+}
+
 export const ArticleContainer: React.FC<{ lang: Locale }> = ({ lang }) => {
-    const { slug } = useParams<{ slug: string }>();
+    const { slug } = useParams<UriParams>();
     const { data, loading } = useQuery<ArticleQueryData, ArticlesQueryVar>(GET_POST, {
         variables: {
             locale: lang,

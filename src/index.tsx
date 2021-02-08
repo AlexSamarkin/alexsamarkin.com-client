@@ -26,9 +26,7 @@ ReactDOM.render(
 );
 
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').catch((registrationError) => {
-            console.log('SW registration failed: ', registrationError);
-        });
+    window.addEventListener('load', async () => {
+        await navigator.serviceWorker.register('/service-worker.js');
     });
 }

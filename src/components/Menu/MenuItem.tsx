@@ -4,7 +4,7 @@ import { NavLink as Link } from 'react-router-dom';
 export interface MenuItemProps {
     title: string;
     link: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export const MenuItem: React.FC<MenuItemProps> = ({ title, onClick, link }) => {

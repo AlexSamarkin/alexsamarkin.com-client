@@ -20,14 +20,12 @@ export const Menu: React.FC<MenuProps> = (props) => {
     useEffect(() => {
         if (active) {
             document.body.classList.add('open-menu');
-        } else {
-            document.body.classList.remove('open-menu');
         }
-    }, [active]);
 
-    const handleClick = () => {
-        setActive(false);
-    };
+        return () => {
+            document.body.classList.remove('open-menu');
+        };
+    }, [active]);
 
     const classNames = `inner-menu js-menu js-tabs ${active ? 'is-active' : ''}`;
     const navClassnames = `nav ${active && 'open'}`;
@@ -39,9 +37,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
                 <ul className={navClassnames}>
                     {items &&
                         items.map((item: NavItem) => {
-                            return (
-                                <MenuItem key={item.link} title={item.title} link={item.link} onClick={handleClick} />
-                            );
+                            return <MenuItem key={item.link} title={item.title} link={item.link} />;
                         })}
                 </ul>
             </div>

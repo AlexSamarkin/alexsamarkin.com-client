@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useMemo } from 'react';
 
 export interface ButtonLinkProps {
     title: string;
@@ -8,7 +8,7 @@ export interface ButtonLinkProps {
 }
 
 export const ButtonLink: React.FC<ButtonLinkProps> = ({ title, href, icon, disabled }) => {
-    const renderIcon = useCallback(() => {
+    const renderIcon = useMemo(() => {
         if (!icon) {
             return null;
         }
@@ -19,7 +19,7 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({ title, href, icon, disab
 
     return (
         <a className={`btn ${disabled ? 'disabled' : ''}`} rel="noreferrer" target={'_blank'} href={href ?? '#'}>
-            {icon && renderIcon()}
+            {icon && renderIcon}
             {title}
         </a>
     );

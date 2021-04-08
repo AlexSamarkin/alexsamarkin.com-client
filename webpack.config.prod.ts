@@ -78,6 +78,7 @@ export default merge(config, {
             minSize: 1000 * 600,
             cacheGroups: {
                 vendor: {
+                    reuseExistingChunk: true,
                     name: 'node_vendors', // part of the bundle name and
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'all',

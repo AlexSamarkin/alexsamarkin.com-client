@@ -2,6 +2,8 @@
     - Single post
 ----------------------------------------------------------------- */
 
+@use "sass:math";
+
 .header-post {
   margin-top: rem(16px);
   text-align: center;
@@ -322,8 +324,8 @@
     width: $size-btn;
 
     @media only screen and (max-width: $small) {
-      height: #{$size-btn / 1.4};
-      width: #{$size-btn / 1.4};
+      height: #{math.div($size-btn, 1.4)};
+      width: #{math.div($size-btn, 1.4)};
     }
 
     .font-icon {

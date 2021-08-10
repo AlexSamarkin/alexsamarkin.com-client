@@ -2,6 +2,8 @@
     - Typography
 ----------------------------------------------------------------- */
 
+@use "sass:math";
+
 h1,
 h2,
 h3,
@@ -78,8 +80,8 @@ h6 {
     width: $size;
 
     @media only screen and (max-width: $small) {
-      height: #{$size / 1.2};
-      width: #{$size / 1.2};
+      height: #{math.div($size, 1.2)};
+      width: #{math.div($size, 1.2)};
     }
   }
 

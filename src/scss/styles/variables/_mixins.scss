@@ -1,4 +1,6 @@
 // Flexbox
+@use "sass:math";
+
 @mixin flex-variant(
   $display,
   $direction: false,
@@ -63,7 +65,7 @@
   @if (unitless($context)) {
     $context: $context * 1px;
   }
-  @return $pixels / $context * 1rem;
+  @return math.div($pixels, $context) * 1rem;
 }
 
 // size to one line

@@ -39,12 +39,9 @@ export const Menu: React.FC<MenuProps> = (props) => {
             <Hamburger isOpen={active} onClick={handleHamburgerClick} />
             <div className={classNames}>
                 <ul className={navClassnames}>
-                    {items &&
-                        items.map((item: NavItem) => {
-                            return (
-                                <MenuItem key={item.link} title={item.title} link={item.link} onClick={handleClick} />
-                            );
-                        })}
+                    {items.map((item: NavItem) => {
+                        return <MenuItem key={item.link} title={item.title} link={item.link} onClick={handleClick} />;
+                    })}
                 </ul>
             </div>
         </>

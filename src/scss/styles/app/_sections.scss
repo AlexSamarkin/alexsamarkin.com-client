@@ -3,6 +3,8 @@
 ----------------------------------------------------------------- */
 
 // Container
+@use "sass:math";
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1240px;
@@ -30,10 +32,10 @@
 
   &__second {
     background-color: $white-color;
-    border-radius: #{$border-rounded-20 / 1.3};
+    border-radius: #{math.div($border-rounded-20, 1.3)};
 
     @media only screen and (max-width: $small) {
-      border-radius: #{$border-rounded-20 / 1.3};
+      border-radius: #{math.div($border-rounded-20, 1.3)};
     }
   }
 
@@ -247,8 +249,8 @@
       drop-shadow(0 rem(8px) rem(8px) rgba($gray-300-color, 0.4));
 
     @media only screen and (max-width: $small) {
-      max-height: #{$size / 1.5};
-      max-width: #{$size / 1.5};
+      max-height: #{math.div($size, 1.5)};
+      max-width: #{math.div($size, 1.5)};
     }
   }
 
@@ -260,8 +262,8 @@
       drop-shadow(0 rem(8px) rem(8px) rgba($gray-300-color, 0.2));
 
     @media only screen and (max-width: $small) {
-      max-height: #{$size / 1.33};
-      max-width: #{$size / 1.33};
+      max-height: #{math.div($size, 1.33)};
+      max-width: #{math.div($size, 1.33)};
     }
   }
 

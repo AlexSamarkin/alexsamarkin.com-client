@@ -10,9 +10,10 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 export default merge(config, {
     mode: 'development',
     devtool: 'source-map',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     devServer: {
         host: '0.0.0.0',
-        disableHostCheck: true,
         port: 3030,
     },
     output: {

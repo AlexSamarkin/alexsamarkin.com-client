@@ -2,6 +2,8 @@
     - Contact
 ----------------------------------------------------------------- */
 
+@use "sass:math";
+
 .contact-form {
   .btn {
     @media only screen and (max-width: $medium) {
@@ -21,7 +23,7 @@
 // Map
 .map {
   background-color: $gray-100-color;
-  border-radius: #{$border-rounded-20 / 1.5};
+  border-radius: #{math.div($border-rounded-20, 1.5)};
   height: rem(380px);
   margin-bottom: rem(32px);
   position: relative;

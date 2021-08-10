@@ -77,6 +77,7 @@ export const Resume: React.FC<ResumeProps> = (props) => {
                             <Progress min={0} max={100} value={80} title={'TypeScript'} />
                             <Progress min={0} max={100} value={90} title={'React.js'} />
                             <Progress min={0} max={100} value={80} title={'Redux + Redux-Saga'} />
+                            <Progress min={0} max={100} value={75} title={'GraphQL'} />
                             <Progress min={0} max={100} value={70} title={'Webpack'} />
                         </div>
                     </div>
@@ -86,6 +87,8 @@ export const Resume: React.FC<ResumeProps> = (props) => {
                         <div className="box box__second">
                             <Progress min={0} max={100} value={70} title={'Node.js'} />
                             <Progress min={0} max={100} value={70} title={'PHP'} />
+                            <Progress min={0} max={100} value={70} title={'Next.js'} />
+                            <Progress min={0} max={100} value={70} title={'Nest.js'} />
                             <Progress min={0} max={100} value={70} title={'MySQL'} />
                             <Progress min={0} max={100} value={60} title={'SQL'} />
                             <Progress min={0} max={100} value={60} title={'Laravel'} />

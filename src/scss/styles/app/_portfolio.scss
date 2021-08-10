@@ -44,7 +44,7 @@
   }
 
   &__image {
-    border-radius: #{$border-rounded-20 / 2};
+    border-radius: #{$border-rounded-20 * 0.5};
     transform: scale3d(1, 1, 1);
   }
 

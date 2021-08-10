@@ -47,16 +47,16 @@ $circle-pulse-size: rem(96px);
 .circle-pulse__1 {
   width: $circle-pulse-size;
   height: $circle-pulse-size;
-  margin-top: -$circle-pulse-size / 2;
-  margin-left: -$circle-pulse-size / 2;
+  margin-top: -$circle-pulse-size * 0.5;
+  margin-left: -$circle-pulse-size * 0.5;
   background-color: $tone-color;
 }
 
 .circle-pulse__2 {
   width: $circle-pulse-size * 0.8;
   height: $circle-pulse-size * 0.8;
-  margin-top: -$circle-pulse-size * 0.8 / 2;
-  margin-left: -$circle-pulse-size * 0.8 / 2;
+  margin-top: -$circle-pulse-size * 0.8 * 0.5;
+  margin-left: -$circle-pulse-size * 0.8 * 0.5;
   background-color: rgba($tone-color, 0.7);
   animation-delay: -0.8s;
 }

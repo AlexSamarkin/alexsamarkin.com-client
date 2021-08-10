@@ -9,12 +9,7 @@ export interface CVButtonProps {
 
 const CVButtonContainer: React.FC<CVButtonProps> = ({ title }) => {
     const { data, loading } = useQuery(GET_CV);
-
-    if (loading) {
-        return <ButtonLink disabled={true} title={title} href={''} icon={'icon-download'} />;
-    }
-
-    return <ButtonLink title={title} href={data.cv.url} icon={'icon-download'} />;
+    return <ButtonLink disabled={loading} title={title} href={!loading ? data.cv.url : ''} icon={'icon-download'} />;
 };
 
 export default CVButtonContainer;

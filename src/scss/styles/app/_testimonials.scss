@@ -2,6 +2,8 @@
     - Testimonials
 ----------------------------------------------------------------- */
 
+@use "sass:math";
+
 .swiper-container {
   .swiper-wrapper {
     min-height: 100%;
@@ -22,7 +24,7 @@
   @media only screen and (max-width: $small) {
     background-size: rem(25px);
     background-position: right rem(16px) top rem(16px);
-    border-radius: #{$border-rounded-20 / 1.5};
+    border-radius: #{math.div($border-rounded-20, 1.5)};
     padding: rem(16px);
   }
 

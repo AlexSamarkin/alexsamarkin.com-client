@@ -13,7 +13,7 @@ import TerserPlugin from 'terser-webpack-plugin';
 const isAnalyze = process.env.ANALYZE === 'true';
 
 const plugins = [
-    new WebpackManifestPlugin(),
+    new WebpackManifestPlugin({}),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
         minify: true,
@@ -116,7 +116,6 @@ export default merge(config, {
                 use: [
                     { loader: MiniCssExtractPlugin.loader, options: { publicPath: '' } },
                     { loader: 'css-loader', options: { url: false } },
-                    { loader: 'resolve-url-loader' },
                     { loader: 'sass-loader' },
                 ],
             },

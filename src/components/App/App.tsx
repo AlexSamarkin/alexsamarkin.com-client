@@ -10,8 +10,6 @@ import translates from '../../lang';
 
 const AboutPage = lazy(() => import('../../containers/AboutContainer/AboutContainer'));
 const ResumePage = lazy(() => import('../../containers/ResumeContainer/ResumeContainer'));
-const ArticlesPage = lazy(() => import('../../containers/ArticlesContainer/ArticlesContainer'));
-const ArticlePage = lazy(() => import('../../containers/ArticleContainer/ArticleContainer'));
 const ContactPage = lazy(() => import('../../pages/Contact/Contact'));
 
 const NotFoundPage = lazy(() => import('../../pages/NotFound/NotFound'));
@@ -51,12 +49,6 @@ export const App: React.FC<AppProps> = ({ lang }) => {
                                                     </Route>
                                                     <Route path="/contact">
                                                         <ContactPage lang={lang} />
-                                                    </Route>
-                                                    <Route exact path="/articles">
-                                                        <ArticlesPage lang={lang} />
-                                                    </Route>
-                                                    <Route path="/articles/:slug">
-                                                        <ArticlePage lang={lang} />
                                                     </Route>
                                                     <Route path="*">
                                                         <NotFoundPage lang={lang} />

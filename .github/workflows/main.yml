@@ -23,7 +23,7 @@ jobs:
       # Чтобы избежать конфиликтов с URL, меняем точки на _, а слеши на минусы
       # Устанавливаем зависимости для сборки
       - name: Install Dependencies
-        run: npm i
+        run: npm i --force
       # Собираем приложение
       - name: Build Appliction
         run: $BUILD_SCRIPT
